@@ -1,0 +1,123 @@
+parent finder 
+$("body > header > section.header-nav-wrapper > div > nav > ul> li> div").click(function(){
+    var parentLink = $(this).parent().find('a').first().text();
+    console.log(parentLink );
+})
+
+current
+$("body > header > section.header-nav-wrapper > div > nav > ul > li > div > ul > li > div > ul > li").click(function() {
+    var currentElementText = $(this).text().trim();
+    console.log(currentElementText);
+});
+
+grandparent
+$("body > header > section.header-nav-wrapper > div > nav > ul > li > div > ul > li > div > ul > li").click(function() {
+  
+    var currentElementText = $(this).text().trim();
+    console.log("Current Element:", currentElementText);
+
+var parentLink = $(this).parent().find('a').first().text();
+    console.log(parentLink );
+
+
+        var grandParentText = $(this).closest("ul").closest("li").closest("ul").closest("li").find('a').first().text().trim();
+    console.log("Grandparent Element:", grandParentText);
+});
+
+
+
+
+
+test
+
+$("body > header > section.header-nav-wrapper > div > nav > ul > li > div > ul > li > div > ul > li").click(function() {
+  
+    var currentElementText = $(this).text().trim();
+    
+    var parentLink =  $(this).closest("ul").closest("li").find('a').first().text().trim();
+   
+    var grandParentText = $(this).closest("ul").closest("li").closest("ul").closest("li").find('a').first().text().trim();
+    console.log(grandParentText +" >> "+ parentLink +" >> "+ currentElementText);
+});
+$("body > header > section.header-nav-wrapper > div > nav > ul > li > div >ul>li").click(function() {
+  
+    var currentElementTex = $(this).text().trim();
+    
+    var parentLink = $(this).parent().find('a').first().text().trim();
+    
+    console.log( parentLink +" >> "+ currentElementTex);
+});
+$("body > header > section.header-nav-wrapper > div > nav > ul > li").click(function() {
+    var currentElementText = $(this).children("a").text().trim();
+    console.log(currentElementText);
+});
+
+
+final
+
+
+
+$(document).ready(function() {
+
+    $("body > header > section.header-nav-wrapper > div > nav > ul > li > div > ul > li > div > ul > li").click(function(event) {
+   
+        var currentElementText = $(this).children("a").text().trim();
+        
+        var parentLink = $(this).parent().parent().parent().children("a").text().trim();
+        
+        var grandParentText = $(this).parent().parent().parent().parent().parent().parent().children("a").text().trim();
+        
+        console.log(grandParentText + " >> " + parentLink + " >> " + currentElementText);
+    });
+
+    $("body > header > section.header-nav-wrapper > div > nav > ul > li > div > ul > li").click(function(event) {
+
+        var currentElementText = $(this).children("a").text().trim();
+        
+        var parentLink = $(this).parent().parent().parent().children("a").text().trim();
+        
+        console.log(parentLink + " >> " + currentElementText);
+    });
+
+    $("body > header > section.header-nav-wrapper > div > nav > ul > li").click(function() {
+     
+        var currentElementText = $(this).children("a").text().trim();
+        
+        console.log(currentElementText);
+    });
+});
+
+###################################################### Super Final
+
+$(document).ready(function() {
+    // For the innermost `li` element (like "Chips & Namkeens")
+    $("body > header > section.header-nav-wrapper > div > nav > ul > li > div > ul > li > div > ul > li").click(function(event) {
+        event.stopPropagation();  // Prevent event bubbling
+        
+        var currentElementText = $(this).children("a").text().trim();
+        var parentLink = $(this).parent().parent().parent().children("a").text().trim();
+        var grandParentText = $(this).parent().parent().parent().parent().parent().parent().children("a").text().trim();
+        
+        console.log(grandParentText + " >> " + parentLink + " >> " + currentElementText);
+    });
+
+    // For the middle `li` element (like "Biscuits, Drinks & Packaged Foods")
+    $("body > header > section.header-nav-wrapper > div > nav > ul > li > div > ul > li").click(function(event) {
+        event.stopPropagation();  // Prevent event bubbling
+        
+        var currentElementText = $(this).children("a").text().trim();
+        var parentLink = $(this).parent().parent().parent().children("a").text().trim();
+        
+        console.log(parentLink + " >> " + currentElementText);
+    });
+
+    // For the top-level `li` element (like "Groceries")
+    $("body > header > section.header-nav-wrapper > div > nav > ul > li").click(function(event) {
+        event.stopPropagation();  // Prevent event bubbling
+        
+        var currentElementText = $(this).children("a").text().trim();
+        
+        console.log(currentElementText);
+    });
+});
+
