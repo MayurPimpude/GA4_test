@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link href="https://cdn.jsdelivr.net/npm/flowbite@2.5.1/dist/flowbite.min.css" rel="stylesheet" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thank You</title>
+
+    <!-- Google Tag Manager -->
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+        new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+        j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+        'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+        })(window,document,'script','dataLayer','GTM-N8GSDWRR');</script>
+
+</head>
+<body>
+
+    <!-- Google Tag Manager (noscript) -->
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-N8GSDWRR"
+    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <!-- End Google Tag Manager (noscript) -->
+
+    <div class="text-center mt-10">
+        <h2 id="thanks" class="text-4xl font-extrabold text-gray-900 dark:text-white">Thank You!</h2>
+        <p id="message" class="mt-2 text-2xl text-gray-700 dark:text-gray-300"></p>
+        <img id="selectedImage" src="" alt="Selected Image" class="mt-5 rounded-xl mx-auto max-w-xs rounded-lg ">
+    </div>
+
+    <script>
+        window.addEventListener('load', function() {
+            const params = new URLSearchParams(window.location.search);
+
+            const name = params.get('name');
+            const email = params.get('email');
+            const phone = params.get('phone');
+            const gender = params.get('gender');
+            const status = params.get('status');
+            const image = params.get('image');
+
+            if (name && email && phone && gender && status && image) {
+                document.getElementById('message').textContent = `${name}`;
+                document.getElementById('selectedImage').src = `https://flowbite.s3.amazonaws.com/docs/gallery/square/${image}`;
+            } else {
+                document.getElementById('message').textContent = 'No information received.';
+            }
+        });
+    </script>
+</body>
+</html>
